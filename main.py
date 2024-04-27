@@ -33,7 +33,7 @@ def download_video(message, url, audio=False, format_id="mp4"):
     url_info = urlparse(url)
     if url_info.scheme:
         if url_info.netloc in ['x.com', 'twitter.com']:
-            if not youtube_url_validation(url):
+            if not x_url_validation(url):
                 bot.reply_to(message, 'Invalid URL')
                 return
 
