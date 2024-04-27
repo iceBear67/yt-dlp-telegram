@@ -62,6 +62,7 @@ def download_video(message, url, audio=False, format_id="mp4"):
         video_title = round(time.time() * 1000)
         with yt_dlp.YoutubeDL({'format': format_id, 'outtmpl': f'outputs/{video_title}.%(ext)s', 'progress_hooks': [progress], 'postprocessors': [{  # Extract audio using ffmpeg
             'key': 'FFmpegExtractAudio',
+            'cookiefile': '.cookies'
             'preferredcodec': 'mp3',
         }] if audio else [], 'max_filesize': config.max_filesize}) as ydl:
             info = ydl.extract_info(url, download=True)
